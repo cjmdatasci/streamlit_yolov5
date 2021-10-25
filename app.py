@@ -37,10 +37,8 @@ def get_yolo5(model_type='s'):
     torch model
         torch-модель типа `<class 'models.common.autoShape'>`
     '''
-    return torch.hub.load('ultralytics/yolov5', 
-                          'yolov5{}'.format(model_type), 
-                          pretrained=True
-                          )
+    return torch.hub.load('ultralytics/yolov5', 'custom', path='best (2).pt'),pretrained=True)
+                          
 
 @st.cache(max_entries=10)
 def get_preds(img : np.ndarray) -> np.ndarray:
