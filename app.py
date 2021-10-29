@@ -37,7 +37,7 @@ def get_yolo5(model_type='s'):
     torch model
         torch-модель типа `<class 'models.common.autoShape'>`
     '''
-    return torch.hub.load('ultralytics/yolov5', 'custom', path='best (2).pt')
+    return torch.hub.load('ultralytics/yolov5', 'custom', path='best (3).pt')
                           
 
 @st.cache(max_entries=10)
@@ -167,8 +167,8 @@ prediction_mode = st.sidebar.radio(
     index=0)
     
 classes_selector = st.sidebar.multiselect('Select classes', 
-                                        CLASSES, default='person')
-all_labels_chbox = st.sidebar.checkbox('All classes', value=False)
+                                        CLASSES, default='koo')
+all_labels_chbox = st.sidebar.checkbox('All classes', value=True)
 
 
 # Prediction section
