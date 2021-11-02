@@ -290,6 +290,8 @@ if prediction_mode == 'Single image':
 
         )]
         fig = go.Figure(data=data)
+        
+        fig.update_layout(title_text='Bar chart of market share')
     
         st.write(fig)
 
