@@ -6,28 +6,24 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 import matplotlib.colors as mcolors
+import matplotlib.pyplot as plt
+
 from PIL import Image
 from streamlit_webrtc import VideoTransformerBase, webrtc_streamer
 
 from config import CLASSES, WEBRTC_CLIENT_SETTINGS
-def main():
-### Loading Company logo
-	row1_space1, center_, row1_space2 = st.beta_columns((.5, 1, .2, ))
-	with center_,_lock :
-
-		file_ = open('ezgif.com-gif-maker.gif', "rb")
-		contents = file_.read()
-		data_url = base64.b64encode(contents).decode("utf-8")
-		file_.close()
-		st.markdown(f'<img src="data:image/gif;base64,{data_url}" alt="cat gif">',unsafe_allow_html=True,)
 
 #изменим название страницы, отображаемое на вкладке браузера
 #set_page_config должна вызываться до всех функций streamlit
+MAGE_EMOJI_URL = 'BCX_LOGO_RGB_FC-TRANSPARENT-300x135-1.png'
 st.set_page_config(
-    page_title="Share of Shelf",
+    page_title="BCX-SOS",page_icon=MAGE_EMOJI_URL
 )
-
-st.title('YOLOv5 demo')
+MAGE_EMOJI_UR= 'BCX_LOGO_RGB_FC-TRANSPARENT-300x135-1.png'
+st.title('Share Of Shelf')
+# Display header.
+st.markdown("<br>", unsafe_allow_html=True)
+st.image(MAGE_EMOJI_UR, width=60)
 
 #region Functions
 # --------------------------------------------
@@ -66,7 +62,9 @@ def get_preds(img : np.ndarray) -> np.ndarray:
         Список найденных объектов в формате 
         `[xmin,ymin,xmax,ymax,conf,label]`
     """
-    return model([img]).xyxy[0].numpy()
+    m = model([img]).xyxy[0].numpy()
+    return m
+    st.write(m)
 
 def get_colors(indexes : List[int]) -> dict:
     '''
@@ -149,12 +147,14 @@ class VideoTransformer(VideoTransformerBase):
 
         return cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
 
+        
+
 #endregion
 
 
 #region Load model
 # ---------------------------------------------------
-
+st.sidebar.image('ezgif.com-gif-maker.gif')
 model_type = st.sidebar.selectbox(
     'Select model type',
     ('s', 'm', 'l', 'x'),
@@ -216,6 +216,26 @@ if prediction_mode == 'Single image':
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         result = get_preds(img)
 
+        df = pd.DataFrame(result, columns=['a', 'b', 'c', 'd' ,'e','f'])
+
+        #st.write(df['f'])
+        koo = []
+        rhodes =[]
+        for i in df['f']:
+            if i == 0:
+                koo.append(i)
+            else:
+                rhodes.append(i)
+
+        #st.write(koo)
+        koo_count=len(koo)
+        rhodes_count=len(rhodes)
+
+        cans= [koo_count, rhodes_count]
+        names =["Koo", "Rhodes"]
+        
+
+
         #скопируем результаты работы кэшируемой функции, чтобы не изменить кэш
         result_copy = result.copy()
         #отберем только объекты нужных классов
@@ -238,6 +258,21 @@ if prediction_mode == 'Single image':
         # выведем изображение с нарисованными боксами
         # use_column_width растянет изображение по ширине центральной колонки
         st.image(img_draw, use_column_width=True)
+
+        st.header("Market Share Analysis")
+        st.balloons()
+        fig = plt.figure(figsize = (10, 5))
+
+        #Plot 1
+        plt.subplot(1, 2, 1)
+        plt.bar (names, cans)
+
+        #Plot 2
+        plt.subplot(1, 2, 2)
+        plt.pie(cans, labels = names)
+
+        st.pyplot(fig)
+
 
 elif prediction_mode == 'Web camera':
     
