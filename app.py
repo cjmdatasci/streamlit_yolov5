@@ -18,14 +18,15 @@ from config import CLASSES, WEBRTC_CLIENT_SETTINGS
 #изменим название страницы, отображаемое на вкладке браузера
 #set_page_config должна вызываться до всех функций streamlit
 MAGE_EMOJI_URL = 'BCX_LOGO_RGB_FC-TRANSPARENT-300x135-1.png'
+MAGE_EMOJI_UR= 'BCX_LOGO_RGB_FC-TRANSPARENT-300x135-1.png'
 st.set_page_config(
     page_title="BCX-SOS",page_icon=MAGE_EMOJI_URL
 )
-MAGE_EMOJI_UR= 'BCX_LOGO_RGB_FC-TRANSPARENT-300x135-1.png'
+st.markdown("<br>", unsafe_allow_html=True)
+st.image(MAGE_EMOJI_UR, width=240)
+
 st.title('Share Of Shelf')
 # Display header.
-st.markdown("<br>", unsafe_allow_html=True)
-st.image(MAGE_EMOJI_UR, width=60)
 
 #region Functions
 # --------------------------------------------
@@ -235,7 +236,7 @@ if prediction_mode == 'Single image':
 
         cans= [koo_count, rhodes_count]
         names =["Koo", "Rhodes"]
-        total = len(cans)
+        
         
 
 
