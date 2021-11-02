@@ -7,6 +7,8 @@ import pandas as pd
 import streamlit as st
 import matplotlib.colors as mcolors
 import matplotlib.pyplot as plt
+import plotly as px
+import plotly.graph_objs as go
 
 from PIL import Image
 from streamlit_webrtc import VideoTransformerBase, webrtc_streamer
@@ -233,6 +235,7 @@ if prediction_mode == 'Single image':
 
         cans= [koo_count, rhodes_count]
         names =["Koo", "Rhodes"]
+        total = len(cans)
         
 
 
@@ -257,6 +260,7 @@ if prediction_mode == 'Single image':
         
         # выведем изображение с нарисованными боксами
         # use_column_width растянет изображение по ширине центральной колонки
+        import plotly.express as px
         st.image(img_draw, use_column_width=True)
 
         st.header("Market Share Analysis")
@@ -264,14 +268,26 @@ if prediction_mode == 'Single image':
         fig = plt.figure(figsize = (10, 5))
 
         #Plot 1
-        plt.subplot(1, 2, 1)
-        plt.bar (names, cans)
+        #plt.subplot(1, 2, 1)
+        #plt.bar (names, cans)
 
         #Plot 2
-        plt.subplot(1, 2, 2)
-        plt.pie(cans, labels = names)
+        #plt.subplot(1, 2, 2)
+        #plt.pie(cans, labels = names)
 
-        st.pyplot(fig)
+        #st.pyplot(fig)
+        #px.subplot(1, 2, 2)
+        fig = px.pie(values= cans, names=names)
+        st.write(fig)
+        
+        
+        data = [go.Bar(
+        x = names,
+        y = cans
+
+        )]
+        fig = go.Figure(data=data)
+        st.write(fig)
 
 
 elif prediction_mode == 'Web camera':
