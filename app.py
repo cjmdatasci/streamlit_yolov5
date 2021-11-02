@@ -157,7 +157,7 @@ class VideoTransformer(VideoTransformerBase):
 
 #region Load model
 # ---------------------------------------------------
-st.sidebar.image('ezgif.com-gif-maker2.mp4')
+st.sidebar.image('logo (2).gif')
 model_type = st.sidebar.selectbox(
     'Select model type',
     ('s', 'm', 'l', 'x'),
