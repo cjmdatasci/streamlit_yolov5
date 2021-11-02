@@ -269,7 +269,7 @@ if prediction_mode == 'Single image':
         fig = plt.figure(figsize = (10, 5))
 
         #Plot 1
-        #plt.subplot(1, 2, 1)
+        
         #plt.bar (names, cans)
 
         #Plot 2
@@ -277,11 +277,11 @@ if prediction_mode == 'Single image':
         #plt.pie(cans, labels = names)
 
         #st.pyplot(fig)
-        #px.subplot(1, 2, 2)
+        #fig.subplot(1, 2, 1)
         fig = px.pie(values= cans, names=names)
         st.write(fig)
         
-        
+        #fig.subplot(1, 2, 2)
         data = [go.Bar(
         x = names,
         y = cans
