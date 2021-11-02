@@ -23,7 +23,7 @@ st.set_page_config(
     page_title="BCX-SOS",page_icon=MAGE_EMOJI_URL
 )
 st.markdown("<br>", unsafe_allow_html=True)
-st.image(MAGE_EMOJI_UR, width=240)
+st.image(MAGE_EMOJI_UR, width=265)
 
 st.title('Share Of Shelf')
 # Display header.
@@ -158,6 +158,7 @@ class VideoTransformer(VideoTransformerBase):
 #region Load model
 # ---------------------------------------------------
 st.sidebar.image('logo (2).gif')
+
 model_type = st.sidebar.selectbox(
     'Select model type',
     ('s', 'm', 'l', 'x'),
@@ -278,7 +279,8 @@ if prediction_mode == 'Single image':
 
         #st.pyplot(fig)
         #px.subplot(1, 2, 2)
-        fig = px.pie(values= cans, names=names)
+        fig = px.pie(values= cans, names=names, title = 'Pie chart of market share')
+        
         st.write(fig)
         
         
@@ -288,6 +290,7 @@ if prediction_mode == 'Single image':
 
         )]
         fig = go.Figure(data=data)
+    
         st.write(fig)
 
 
