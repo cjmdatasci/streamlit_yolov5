@@ -25,7 +25,7 @@ st.set_page_config(
 st.markdown("<br>", unsafe_allow_html=True)
 st.image(MAGE_EMOJI_UR, width=265)
 
-st.title('Share Of Shelf')
+st.title('Computer Vision')
 # Display header.
 
 #region Functions
