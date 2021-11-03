@@ -46,7 +46,7 @@ def get_yolo5(model_type='s'):
     torch model
         torch-модель типа `<class 'models.common.autoShape'>`
     '''
-    return torch.hub.load('ultralytics/yolov5', 'custom', path='best (7).pt')
+    return torch.hub.load('ultralytics/yolov5', 'custom', path='best (5).pt')
                           
 
 @st.cache(max_entries=10)
@@ -333,4 +333,4 @@ elif prediction_mode == 'Web camera':
 detected_ids = set(detected_ids if detected_ids is not None else target_class_ids)
 labels = [CLASSES[index] for index in detected_ids]
 legend_df = pd.DataFrame({'label': labels})
-#st.dataframe(legend_df.style.applymap(get_legend_color))
+st.dataframe(legend_df.style.applymap(get_legend_color))
