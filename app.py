@@ -227,6 +227,7 @@ if prediction_mode == 'Single image':
         rhodes =[]
         luckystar= []
         potogold = []
+        ritebrand = []
         for i in df['classes']:
             if i == 0:
                 koo.append(i)
@@ -234,6 +235,8 @@ if prediction_mode == 'Single image':
                 rhodes.append(i)
             elif i == 2:
                 luckystar.append(i)
+            elif i ==3:
+                ritebrand.append(i)
             else:
                 potogold.append(i)
 
@@ -242,9 +245,10 @@ if prediction_mode == 'Single image':
         rhodes_count=len(rhodes)
         luckystar_count=len(luckystar)
         potogold_count=len(potogold)
+        ritebrand_count=len(ritebrand)
 
-        cans= [koo_count, rhodes_count, luckystar_count, potogold_count]
-        names =["Koo", "Rhodes", "Lucky Star", "Pot O Gold"]
+        cans= [koo_count, rhodes_count, luckystar_count, potogold_count, ritebrand_count ]
+        names =["Koo", "Rhodes", "Lucky Star", "Pot O Gold", "Ritebrand"]
 
 
         #скопируем результаты работы кэшируемой функции, чтобы не изменить кэш
@@ -285,9 +289,14 @@ if prediction_mode == 'Single image':
 
         #st.pyplot(fig)
         #px.subplot(1, 2, 2)
+        
+     
+
         fig = px.pie(values= cans, names=names, title = 'Pie chart of market share')
         
         st.write(fig)
+
+        
         
         
         data = [go.Bar(
@@ -300,6 +309,8 @@ if prediction_mode == 'Single image':
         fig.update_layout(title_text='Bar chart of market share')
     
         st.write(fig)
+
+        
 
 
 elif prediction_mode == 'Web camera':
@@ -322,4 +333,4 @@ elif prediction_mode == 'Web camera':
 detected_ids = set(detected_ids if detected_ids is not None else target_class_ids)
 labels = [CLASSES[index] for index in detected_ids]
 legend_df = pd.DataFrame({'label': labels})
-st.dataframe(legend_df.style.applymap(get_legend_color))
+#st.dataframe(legend_df.style.applymap(get_legend_color))
