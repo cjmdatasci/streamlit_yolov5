@@ -225,6 +225,7 @@ if prediction_mode == 'Single image':
         #st.write(df['f'])
         koo = []
         rhodes =[]
+        luckystar= []
         for i in df['f']:
             if i == 0:
                 koo.append(i)
