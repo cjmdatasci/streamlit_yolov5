@@ -1,6 +1,6 @@
 from streamlit_webrtc import ClientSettings
 
-CLASSES = [ 'koo', 'rhodes', 'Pot O Gold', 'ritebrand', 'lucky star' ]
+CLASSES = [ 'koo', 'rhodes', 'Pot O- Gold', 'ritebrand', 'luckystar' ]
 
 
 WEBRTC_CLIENT_SETTINGS = ClientSettings(

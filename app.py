@@ -46,7 +46,7 @@ def get_yolo5(model_type='s'):
     torch model
         torch-модель типа `<class 'models.common.autoShape'>`
     '''
-    return torch.hub.load('ultralytics/yolov5', 'custom', path='best (2.pt')
+    return torch.hub.load('ultralytics/yolov5', 'custom', path='best (6).pt')
                           
 
 @st.cache(max_entries=10)
@@ -223,14 +223,25 @@ if prediction_mode == 'Single image':
         df = pd.DataFrame(result, columns=['a', 'b', 'c', 'd' ,'e','f'])
 
         #st.write(df['f'])
+        #p=df.loc[df['name'] == 'Pot O- Gold']
+        
         koo = []
         rhodes =[]
-        luckystar= []
+        luckystar = []
+        ritebrand = []
+        p = []
+
         for i in df['f']:
             if i == 0:
                 koo.append(i)
             else:
                 rhodes.append(i)
+            
+            
+    
+
+        #loc
+        #         
 
         #st.write(koo)
         koo_count=len(koo)
