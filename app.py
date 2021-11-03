@@ -220,37 +220,31 @@ if prediction_mode == 'Single image':
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         result = get_preds(img)
 
-        df = pd.DataFrame(result, columns=['a', 'b', 'c', 'd' ,'e','f'])
+        df = pd.DataFrame(result, columns=['xmin', 'ymix', 'xmax', 'ymax' ,'conf_interval','classes'])
 
-        #st.write(df['f'])
-        #p=df.loc[df['name'] == 'Pot O- Gold']
-        
+        #st.write(result)
         koo = []
         rhodes =[]
-        luckystar = []
-        ritebrand = []
-        p = []
-
-        for i in df['f']:
+        luckystar= []
+        potogold = []
+        for i in df['classes']:
             if i == 0:
                 koo.append(i)
-            else:
+            elif i == 1:
                 rhodes.append(i)
-            
-            
-    
-
-        #loc
-        #         
+            elif i == 2:
+                luckystar.append(i)
+            else:
+                potogold.append(i)
 
         #st.write(koo)
         koo_count=len(koo)
         rhodes_count=len(rhodes)
+        luckystar_count=len(luckystar)
+        potogold_count=len(potogold)
 
-        cans= [koo_count, rhodes_count]
-        names =["Koo", "Rhodes"]
-        
-        
+        cans= [koo_count, rhodes_count, luckystar_count, potogold_count]
+        names =["Koo", "Rhodes", "Lucky Star", "Pot O Gold"]
 
 
         #скопируем результаты работы кэшируемой функции, чтобы не изменить кэш
