@@ -46,7 +46,7 @@ def get_yolo5(model_type='s'):
     torch model
         torch-модель типа `<class 'models.common.autoShape'>`
     '''
-    return torch.hub.load('ultralytics/yolov5', 'custom', path='best (6).pt')
+    return torch.hub.load('ultralytics/yolov5', 'custom', path='best (8).pt')
                           
 
 @st.cache(max_entries=10)
@@ -225,30 +225,22 @@ if prediction_mode == 'Single image':
         #st.write(result)
         koo = []
         rhodes =[]
-        luckystar= []
-        potogold = []
         ritebrand = []
         for i in df['classes']:
             if i == 0:
                 koo.append(i)
             elif i == 1:
                 rhodes.append(i)
-            elif i == 2:
-                luckystar.append(i)
-            elif i ==3:
-                ritebrand.append(i)
             else:
-                potogold.append(i)
+                ritebrand.append(i)
 
         #st.write(koo)
         koo_count=len(koo)
         rhodes_count=len(rhodes)
-        luckystar_count=len(luckystar)
-        potogold_count=len(potogold)
         ritebrand_count=len(ritebrand)
 
-        cans= [koo_count, rhodes_count, luckystar_count, potogold_count, ritebrand_count ]
-        names =["Koo", "Rhodes", "Lucky Star", "Pot O Gold", "Ritebrand"]
+        cans= [koo_count, rhodes_count, ritebrand_count ]
+        names =["Koo", "Rhodes", "Ritebrand"]
 
 
         #скопируем результаты работы кэшируемой функции, чтобы не изменить кэш
