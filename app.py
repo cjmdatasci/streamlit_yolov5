@@ -46,7 +46,7 @@ def get_yolo5(model_type='s'):
     torch model
         torch-модель типа `<class 'models.common.autoShape'>`
     '''
-    return torch.hub.load('ultralytics/yolov5', 'custom', path='bestcj3.pt')
+    return torch.hub.load('ultralytics/yolov5', 'custom', path='bestcj5.pt')
                           
 
 @st.cache(max_entries=10)
