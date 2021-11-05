@@ -23,7 +23,7 @@ st.set_page_config(
     page_title="BCX-SOS",page_icon=MAGE_EMOJI_URL
 )
 st.markdown("<br>", unsafe_allow_html=True)
-st.image(MAGE_EMOJI_UR, width=265)
+st.image(MAGE_EMOJI_UR, width=235)
 
 st.title('Computer Vision')
 # Display header.
@@ -46,7 +46,7 @@ def get_yolo5(model_type='s'):
     torch model
         torch-модель типа `<class 'models.common.autoShape'>`
     '''
-    return torch.hub.load('ultralytics/yolov5', 'custom', path='bestcj2.pt')
+    return torch.hub.load('ultralytics/yolov5', 'custom', path='bestcj3.pt')
                           
 
 @st.cache(max_entries=10)
