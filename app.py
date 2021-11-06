@@ -269,8 +269,7 @@ if prediction_mode == 'Single image':
         
         # выведем список найденных классов при работе с изображением или список всех
         # выбранных классов при работе с видео
-        detected_ids = set(detected_ids if detected_ids is not None else target_class_ids)
-        labels = [CLASSES[index] for index in detected_ids]
+
         legend_df = pd.DataFrame({'label': labels})
         st.dataframe(legend_df.style.applymap(get_legend_color))
 
@@ -327,4 +326,6 @@ elif prediction_mode == 'Web camera':
         ctx.video_transformer.rgb_colors = rgb_colors
         ctx.video_transformer.target_class_ids = target_class_ids
 
+detected_ids = set(detected_ids if detected_ids is not None else target_class_ids)
+labels = [CLASSES[index] for index in detected_ids]
 
