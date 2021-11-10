@@ -159,11 +159,11 @@ class VideoTransformer(VideoTransformerBase):
 # ---------------------------------------------------
 st.sidebar.image('logo (2).gif')
 
-model_type = st.sidebar.selectbox(
-    'Select model type',
-    ('s', 'm', 'l', 'x'),
-    index=1,
-    format_func=lambda s: s.upper())
+model_type = 'm'
+    #'Select model type',
+    #('s', 'm', 'l', 'x'),
+    #index=1,
+    #format_func=lambda s: s.upper())
 
 with st.spinner('Loading the model...'):
     model = get_yolo5(model_type)
@@ -180,9 +180,9 @@ prediction_mode = st.sidebar.radio(
     ('Single image', 'Web camera'),
     index=0)
     
-classes_selector = st.sidebar.multiselect('Select classes', 
+classes_selector = st.sidebar.multiselect('Select Brands', 
                                         CLASSES, default='koo')
-all_labels_chbox = st.sidebar.checkbox('All classes', value=True)
+all_labels_chbox = st.sidebar.checkbox('All Brands', value=True)
 
 
 # Prediction section
